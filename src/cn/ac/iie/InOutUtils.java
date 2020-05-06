@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InOutUtils {
-    // 从文件读取数据
+    /** 从文件读取数据 */
     public static List getDataFromFile(Class clazz, String path, String charsetName, String split) throws Exception {
         InputStream inputStream = clazz.getResourceAsStream(path);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, charsetName));
@@ -28,12 +28,12 @@ public class InOutUtils {
     }
 
 
-    // 从文件读取数据
+    /** 从文件读取数据  */
     public static List getDataFromFile(Class clazz, String path, String split) throws Exception {
         return getDataFromFile(clazz, path, "utf-8", split);
     }
 
-    // 从CSV文件中读取数据
+    /** 从CSV文件中读取数据  */
     public static List<String[]> getDataFromCSVFile(String path, String charsetName, String split) {
         ArrayList<String[]> list = new ArrayList<>();
         try {
@@ -52,12 +52,12 @@ public class InOutUtils {
         return list;
     }
 
-    // 从CSV文件中读取数据
+    /** 从CSV文件中读取数据 */
     public static List<String[]> getDataFromCSVFile(String path, String split) {
         return getDataFromCSVFile(path,"utf-8",split);
     }
 
-    // 输出数据到CSV文件
+    /** 输出数据到CSV文件 */
     public static void setDataToCSVFile(String path,String charsetName, boolean isOverWrite, List<String> list) {
         try {
             BufferedWriter bufferedWriter = transfer(path,charsetName);
@@ -79,7 +79,7 @@ public class InOutUtils {
         }
     }
 
-    // 输出数据到文件 CSV
+    /** 输出数据到文件 CSV  */
     public static void setDataToCSVFile(String path,String charsetName, boolean isOverWrite, List<String[]> list, String split) {
         ArrayList<String> arrayList = new ArrayList<>();
         for (String[] strings : list) {

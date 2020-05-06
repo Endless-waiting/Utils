@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class DateUtils {
     /**
-     * 随机生成minDate到maxDate时间范围内的日期
+     * 随机生成指定minDate到maxDate时间范围内的日期
      *
      * @param minDate
      * @param maxDate

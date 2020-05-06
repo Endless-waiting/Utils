@@ -27,9 +27,9 @@ public class PersonUtils {
 
         if (listOfXian == null || listOfDi == null || listOfSheng == null){
             try {
-                listOfXian = InOutUtils.getDataFromFile(PersonUtils.class, "/Area/县级市", "\\s+");
-                listOfDi = InOutUtils.getDataFromFile(PersonUtils.class, "/Area/地级市", "\\s+");
-                listOfSheng = InOutUtils.getDataFromFile(PersonUtils.class, "/Area/省", "\\s+");
+                listOfXian = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Area/县级市", "\\s+");
+                listOfDi = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Area/地级市", "\\s+");
+                listOfSheng = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Area/省", "\\s+");
                 for (String[] strings : listOfXian) {
                     mapOfXian.put(strings[0],strings[1]);
                 }
@@ -156,7 +156,7 @@ public class PersonUtils {
     private static String firstName(){
         if (firstName == null){
             try {
-                firstName = InOutUtils.getDataFromFile(PersonUtils.class,"/Person/Name/百家姓","\\s+");
+                firstName = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Name/百家姓","\\s+");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -170,7 +170,7 @@ public class PersonUtils {
         if(sex){
             if (secondNameMale == null){
                 try {
-                    secondNameMale = InOutUtils.getDataFromFile(PersonUtils.class,"/Person/Name/男性名","\\s+");
+                    secondNameMale = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Name/男性名","\\s+");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -179,7 +179,7 @@ public class PersonUtils {
         }else{
             if (secondNameFemale == null){
                 try {
-                    secondNameFemale = InOutUtils.getDataFromFile(PersonUtils.class,"/Person/Name/女性名","\\s+");
+                    secondNameFemale = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Name/女性名","\\s+");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

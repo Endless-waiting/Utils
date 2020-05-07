@@ -2,12 +2,25 @@ package cn.ac.iie;
 
 public class CalculateUtils {
     /**
-     * 随机返回a和b其中一个数
+     * 随机返回指定范围内的日期
      *
-     * @param a min
-     * @param b max
+     * @param min 起始值
+     * @param max 结束值
      */
-    public static int randomAB(int a, int b) {
-        return (int) ((Math.random() * Math.abs(a - b)) + Math.min(a, b));
+    public static int getRandomInt(int min, int max) {
+        return (int) ((Math.random() * Math.abs(min - max)) + Math.min(min, max));
+    }
+    /**
+     * 随机返回指定范围内的时间
+     *
+     * @param min 起始值
+     * @param max 结束值
+     */
+    public static long getRandomLong(long min,long max){
+        long rtn = min + (long)(Math.random() * (max - min));
+        if(rtn == min || rtn == max){
+            return getRandomLong(min,max);
+        }
+        return rtn;
     }
 }

@@ -1,6 +1,7 @@
 package cn.ac.iie;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +50,7 @@ public class PersonUtils {
         // ID 省份证号码
         StringBuilder id = new StringBuilder();
         // 随机生成县级市的代码和名称
-        String codeOfXian = listOfCode.get(CalculateUtils.randomAB(0, listOfCode.size()));
+        String codeOfXian = listOfCode.get(CalculateUtils.getRandomInt(0, listOfCode.size()));
         String nameOfXian = mapOfXian.get(codeOfXian);
         // 获得省分的编码和名称
         String codeOfSheng = codeOfXian.substring(0, 2);
@@ -58,9 +59,10 @@ public class PersonUtils {
         String codeOfDi = codeOfXian.substring(0, 4);
         String nameOfDi = mapOfDi.get(codeOfDi);
         // 生日
-        String birthday = DateUtils.randomDate(Integer.valueOf(age)-1,Integer.valueOf(age));
+        Calendar calendar = DateUtils.getRandomCalendar(Integer.valueOf(age) - 1, Integer.valueOf(age));
+        String birthday = DateUtils.getStringByTransferCalendar(calendar,"yyyyMMdd");
         // 序号位
-        String no = String.valueOf(CalculateUtils.randomAB(10, 99));
+        String no = String.valueOf(CalculateUtils.getRandomInt(10, 99));
 
         id.append(codeOfXian).append(birthday).append(no).append(sex);
 
@@ -156,12 +158,12 @@ public class PersonUtils {
     private static String firstName(){
         if (firstName == null){
             try {
-                firstName = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Name/百家姓","\\s+");
+                firstName = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Person/Name/百家姓","\\s+");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return firstName.get(CalculateUtils.randomAB(0,firstName.size()));
+        return firstName.get(CalculateUtils.getRandomInt(0,firstName.size()));
     }
 
     /** 随机生成名字
@@ -170,21 +172,21 @@ public class PersonUtils {
         if(sex){
             if (secondNameMale == null){
                 try {
-                    secondNameMale = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Name/男性名","\\s+");
+                    secondNameMale = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Person/Name/男性名","\\s+");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            return secondNameMale.get(CalculateUtils.randomAB(0,secondNameMale.size()));
+            return secondNameMale.get(CalculateUtils.getRandomInt(0,secondNameMale.size()));
         }else{
             if (secondNameFemale == null){
                 try {
-                    secondNameFemale = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Name/女性名","\\s+");
+                    secondNameFemale = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Person/Name/女性名","\\s+");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            return secondNameFemale.get(CalculateUtils.randomAB(0,secondNameFemale.size()));
+            return secondNameFemale.get(CalculateUtils.getRandomInt(0,secondNameFemale.size()));
         }
     }
 

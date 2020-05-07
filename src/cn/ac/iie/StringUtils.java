@@ -10,23 +10,23 @@ public class StringUtils {
      * @return
      * @author mingzijian
      */
-    public static String randomOne(String s[]) {
+    public static String getStringArrayByRandom(String s[]) {
         return s[new Random().nextInt(s.length - 1)];
     }
 
     // 生成指定长度的中文字符串
-    public static String randomString(int number) {
+    public static String getStringsByRandomm(int number) {
         StringBuilder builder = new StringBuilder();
         int i = 0;
         while (i < number) {
-            builder.append(getRandomChar());
+            builder.append(getCharByRandom());
             i++;
         }
         return builder.toString();
     }
 
     // 随机生成一个中文字符
-    public static char getRandomChar() {
+    public static char getCharByRandom() {
         String str = "";
         int hightPos;
         int lowPos;

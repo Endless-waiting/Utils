@@ -50,44 +50,52 @@ public class DateUtils {
         return null;
     }
 
-    /** calendar ---> long */
+    /** calendar ---> long
+     * */
     public static Long getLongByTransferCalendar(Calendar calendar){
         long l = calendar.getTimeInMillis();
         return l;
     }
 
-    /** long ----> calendar */
+    /** long ----> calendar
+     * */
     public static Calendar getCalendarByTransferLong(Long l){
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(l);
         return calendar;
     }
 
-    /** calendar ---> date */
+    /** calendar ---> date
+     * */
     public static Date getDateByTransferCalendar(Calendar calendar){
         Date date = calendar.getTime();
         return date;
     }
 
-    /** date ---> calendar */
+    /** date ---> calendar
+     * */
     public static Calendar getCalendarByTransferDate(Date date){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return calendar;
     }
 
-    /** date ---> long */
+    /** date ---> long
+     * */
     public static Long getLongByTransferDate(Date date){
         long l = date.getTime();
         return l;
     }
 
-    /** long ---> date */
+    /** long ---> date
+     * */
     public static Date getDateByTransferLong(Long l){
         Date date = new Date(l);
         return date;
     }
-    /** string ---> date */
+
+    /** string ---> date
+     * */
     public static Date getDateByTransferString(String string,String format){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         Date date = null;
@@ -99,14 +107,16 @@ public class DateUtils {
         return date;
     }
 
-    /** data ---> string */
+    /** data ---> string
+     * */
     public static String getStringByTransferDate(Date date,String format){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         String string = simpleDateFormat.format(date);
         return string;
     }
 
-    /** calendar ---> string */
+    /** calendar ---> string
+     * */
     public static String getStringByTransferCalendar(Calendar calendar,String format){
         Date date = calendar.getTime();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
@@ -114,7 +124,8 @@ public class DateUtils {
         return string;
     }
 
-    /** string ---> calendar */
+    /** string ---> calendar
+     * */
     public static Calendar getCalendarByTransferString(String string, String format){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         Date date = null;
@@ -131,7 +142,7 @@ public class DateUtils {
     /** 根据出生年月计算年龄
      * @param birthDay  出生日期
      * */
-    public static int getAgeByBirth(Date birthDay) throws Exception {
+    public static int getAgeByBirth(Date birthDay) {
         int age = 0;
         Calendar cal = Calendar.getInstance();
         if (cal.before(birthDay)) { //出生日期晚于当前时间，无法计算

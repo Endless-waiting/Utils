@@ -1,6 +1,8 @@
 package cn.ac.iie;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringUtils {
     /**
@@ -47,5 +49,25 @@ public class StringUtils {
             System.out.println("错误");
         }
         return str.charAt(0);
+    }
+
+    /**
+     * 是否是英文
+     * @param c
+     * @return
+     */
+    public static boolean isEnglish(String charaString){
+        return charaString.matches("^[a-zA-Z]*");
+    }
+
+    /** 判断是否是中文 */
+    public static boolean isChinese(String str){
+        String regEx = "[\\u4e00-\\u9fa5]+";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        if(m.find())
+            return true;
+        else
+            return false;
     }
 }

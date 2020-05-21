@@ -159,7 +159,9 @@ public class DateUtils {
         age = yearNow - yearBirth;   //计算整岁数
         if (monthNow <= monthBirth) {
             if (monthNow == monthBirth) {
-                if (dayOfMonthNow < dayOfMonthBirth) age--;//当前日期在生日之前，年龄减一
+                if (dayOfMonthNow < dayOfMonthBirth) {
+                    age--;//当前日期在生日之前，年龄减一
+                }
             } else {
                 age--;//当前月份在生日之前，年龄减一
             }

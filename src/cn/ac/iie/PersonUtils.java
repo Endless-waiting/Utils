@@ -72,14 +72,15 @@ public class PersonUtils {
 
         // 婚姻状况
         String married;
-        if (Integer.valueOf(age)<=18)
+        if (Integer.valueOf(age)<=18) {
             married = "0";
-        else {
+        } else {
             double random = Math.random();
-            if (random>0.2)
+            if (random>0.2) {
                 married = "1";
-            else
+            } else {
                 married = "0";
+            }
         }
 
         // 手机号
@@ -214,8 +215,9 @@ public class PersonUtils {
                 Integer.valueOf(chars[15])*4+
                 Integer.valueOf(chars[16])*2;
         int check = sum % 11;
-        if (check == 10)
+        if (check == 10) {
             return "X";
+        }
         return String.valueOf(check);
     }
 }

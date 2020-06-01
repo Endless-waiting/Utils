@@ -3,27 +3,31 @@ package cn.ac.iie;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+
+/**
+ {
+ "jsonArray": [{"name": "张三","age": 24,"sex": "男","phone": "13612345678"},{"name": "李四","age": 31,"sex": "女","phone": "13898765432"}],
+ "jsonMap": {"name": "String;quasi-identifier","age": "Integer;sensitive","sex": "String;non-sensitive","phone": "String;identifier"}
+ }
+ */
 
 public class JsonUtils {
     /** 解析原始数据data，返回数组
      * @param key 解析的jsonarray的key值
      * @param data 原始数据，json格式的字符串
      * @return 将数据封装到List<String[]>中 */
-    public static List<String[]> analyJSON(String key, String data){
+    public static List<String[]> analyJsonArray(String key, String data){
         // 将json数据解析成jsonArray
         JSONObject dataObject = JSONObject.parseObject(data);
         JSONArray jsonArray = dataObject.getJSONArray(key);
-        return analyJSON(key,jsonArray);
+        return analyJsonArray(jsonArray);
     }
 
     /** 解析jsonArray，返回数组
-     * @param key 解析的jsonarray的key值
      * @param jsonArray fastjson解析原始数据后通过key获取的json格式的数组josnArray
      * @return 将数据封装到List<String[]>中 */
-    public static List<String[]> analyJSON(String key,JSONArray jsonArray){
+    public static List<String[]> analyJsonArray(JSONArray jsonArray){
         if (jsonArray==null || "null".equals(jsonArray)){
             return null;
         }
@@ -61,5 +65,29 @@ public class JsonUtils {
         }
 
         return list;
+    }
+
+    /** 解析一个json对象中存储多个值
+     * @param key 解析的jsonarray的key值
+     * @param data 原始数据，json格式的字符串
+     * @return 将数据封装到Map中返回 */
+    public static Map<String,String> analyJsonMap(String key,String data){
+        // 将json数据解析成jsonArray
+        JSONObject object = JSONObject.parseObject(data);
+        JSONObject jsonMap = object.getJSONObject(key);
+        return analyJsonMap(jsonMap);
+    }
+
+    /** 解析一个json对象中存储多个值
+     * @param jsonMap fastjson解析原始数据后通过key获取的json格式的对象
+     * @return 将数据封装到Map中返回 */
+    public static Map<String,String> analyJsonMap(JSONObject jsonMap){
+        Map<String, String> map = new HashMap<>();
+        Iterator<String> keySetIterator = jsonMap.keySet().iterator();
+        while (keySetIterator.hasNext()){
+            String key = keySetIterator.next();
+            map.put(key,jsonMap.getString(key));
+        }
+        return map;
     }
 }

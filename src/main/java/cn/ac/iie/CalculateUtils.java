@@ -2,7 +2,7 @@ package cn.ac.iie;
 
 public class CalculateUtils {
     /**
-     * 随机返回指定范围内的日期
+     * 随机返回指定范围内的数字
      *
      * @param min 起始值
      * @param max 结束值
@@ -11,7 +11,7 @@ public class CalculateUtils {
         return (int) ((Math.random() * Math.abs(min - max)) + Math.min(min, max));
     }
     /**
-     * 随机返回指定范围内的时间
+     * 随机返回指定范围内的数字
      *
      * @param min 起始值
      * @param max 结束值

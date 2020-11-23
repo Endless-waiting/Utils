@@ -1,4 +1,4 @@
-package cn.ac.iie;
+package cn.ac.iie.json;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

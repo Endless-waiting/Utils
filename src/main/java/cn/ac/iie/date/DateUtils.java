@@ -1,4 +1,4 @@
-package cn.ac.iie;
+package cn.ac.iie.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,14 +52,14 @@ public class DateUtils {
 
     /** calendar ---> long
      * */
-    public static Long getLongByTransferCalendar(Calendar calendar){
+    public static Long transferCalendarToLong(Calendar calendar){
         long l = calendar.getTimeInMillis();
         return l;
     }
 
     /** long ----> calendar
      * */
-    public static Calendar getCalendarByTransferLong(Long l){
+    public static Calendar transferLongToCalendar(Long l){
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(l);
         return calendar;
@@ -67,14 +67,14 @@ public class DateUtils {
 
     /** calendar ---> date
      * */
-    public static Date getDateByTransferCalendar(Calendar calendar){
+    public static Date transferCalendarToDate(Calendar calendar){
         Date date = calendar.getTime();
         return date;
     }
 
     /** date ---> calendar
      * */
-    public static Calendar getCalendarByTransferDate(Date date){
+    public static Calendar transferDateToCalendar(Date date){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return calendar;
@@ -82,21 +82,21 @@ public class DateUtils {
 
     /** date ---> long
      * */
-    public static Long getLongByTransferDate(Date date){
+    public static Long transferDateToLong(Date date){
         long l = date.getTime();
         return l;
     }
 
     /** long ---> date
      * */
-    public static Date getDateByTransferLong(Long l){
+    public static Date transferLongToDate(Long l){
         Date date = new Date(l);
         return date;
     }
 
     /** string ---> date
      * */
-    public static Date getDateByTransferString(String string,String format){
+    public static Date transferStringToDate(String string,String format){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         Date date = null;
         try {
@@ -109,7 +109,7 @@ public class DateUtils {
 
     /** data ---> string
      * */
-    public static String getStringByTransferDate(Date date,String format){
+    public static String transferDateToSting(Date date,String format){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         String string = simpleDateFormat.format(date);
         return string;
@@ -117,7 +117,7 @@ public class DateUtils {
 
     /** calendar ---> string
      * */
-    public static String getStringByTransferCalendar(Calendar calendar,String format){
+    public static String transferCalendarToString(Calendar calendar,String format){
         Date date = calendar.getTime();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         String string = simpleDateFormat.format(date);
@@ -126,7 +126,7 @@ public class DateUtils {
 
     /** string ---> calendar
      * */
-    public static Calendar getCalendarByTransferString(String string, String format){
+    public static Calendar transferStringToCalendar(String string, String format){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         Date date = null;
         try {

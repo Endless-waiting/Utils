@@ -1,5 +1,9 @@
 package cn.ac.iie;
 
+import cn.ac.iie.date.CalculateUtils;
+import cn.ac.iie.date.DateUtils;
+import cn.ac.iie.file.ReaderFileUtils;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -28,9 +32,9 @@ public class PersonUtils {
 
         if (listOfXian == null || listOfDi == null || listOfSheng == null){
             try {
-                listOfXian = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Area/县级市", "\\s+");
-                listOfDi = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Area/地级市", "\\s+");
-                listOfSheng = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Area/省", "\\s+");
+                listOfXian = ReaderFileUtils.getDataFromFile( "\\resources\\Data\\Area\\县级市", "\\s+");
+                listOfDi = ReaderFileUtils.getDataFromFile("\\resources\\Data\\Area\\地级市", "\\s+");
+                listOfSheng = ReaderFileUtils.getDataFromFile( "\\resources\\Data\\Area\\省", "\\s+");
                 for (String[] strings : listOfXian) {
                     mapOfXian.put(strings[0],strings[1]);
                 }
@@ -60,7 +64,7 @@ public class PersonUtils {
         String nameOfDi = mapOfDi.get(codeOfDi);
         // 生日
         Calendar calendar = DateUtils.getRandomCalendar(Integer.valueOf(age) - 1, Integer.valueOf(age));
-        String birthday = DateUtils.getStringByTransferCalendar(calendar,"yyyyMMdd");
+        String birthday = DateUtils.transferCalendarToString(calendar,"yyyyMMdd");
         // 序号位
         String no = String.valueOf(CalculateUtils.getRandomInt(10, 99));
 
@@ -159,7 +163,7 @@ public class PersonUtils {
     private static String firstName(){
         if (firstName == null){
             try {
-                firstName = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Person/Name/百家姓","\\s+");
+                firstName = ReaderFileUtils.getDataFromFile( "\\resources\\Data\\Person\\Name\\百家姓","\\s+");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -173,7 +177,7 @@ public class PersonUtils {
         if(sex){
             if (secondNameMale == null){
                 try {
-                    secondNameMale = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Person/Name/男性名","\\s+");
+                    secondNameMale = ReaderFileUtils.getDataFromFile( "\\resources\\Data\\Person\\Name\\男性名","\\s+");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -182,7 +186,7 @@ public class PersonUtils {
         }else{
             if (secondNameFemale == null){
                 try {
-                    secondNameFemale = InOutUtils.getDataFromFile(PersonUtils.class, "/Data/Person/Name/女性名","\\s+");
+                    secondNameFemale = ReaderFileUtils.getDataFromFile( "\\resources\\Data\\Person\\Name\\女性名","\\s+");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
